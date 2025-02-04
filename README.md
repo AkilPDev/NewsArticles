@@ -1,5 +1,6 @@
 NewApp:
-Design : Jetpackcompose
+Design : Jetpack compose
 Pattern : MVVM
-Api : RetriFit Api
+Api : RetroFit Api
 Localdb : RoomDataBase
+
