@@ -12,17 +12,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class NewsViewModel @Inject constructor(private val repository: NewsRepository) : ViewModel() {
-    private val _news = MutableStateFlow<NewsArticle>(NewsArticle(isLoading = true, articleList = emptyList(), error = null))
+    private val _news = MutableStateFlow<NewsArticle>(NewsArticle(isLoading = false, articleList = emptyList(), error = null))
     val news: StateFlow<NewsArticle> = _news
 
     fun fetchNews(apiKey: String) {
         _news.value = NewsArticle(isLoading=true,  error=null)
-//        viewModelScope.launch {
-//            repository.getNews(apiKey).collect {
-//
-//                _news.value = NewsArticle(isLoading=false, articleList= it, error=null)
-//            }
-//        }
         viewModelScope.launch {
             repository.getNews(apiKey).collect { result ->
                 result.fold(

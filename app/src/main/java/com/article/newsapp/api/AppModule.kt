@@ -69,6 +69,7 @@ object AppModule {
         return NewsRepository(api, db)
     }
 
+    // Provide Application
     @Provides
     @Singleton
     fun provideApplication(@ApplicationContext context: Context): Application {
